@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+					"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.casc.sczd.mapper.RoleMapper">
+
+
+	<resultMap id="roleMap" type="com.casc.sczd.bean.SysRole">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result column="role_name" jdbcType="VARCHAR" property="roleName" />
+		<result column="description" jdbcType="VARCHAR" property="description" />
+		<result column="enabled" jdbcType="INTEGER" property="enabled" />
+		<result column="create_by" jdbcType="BIGINT" property="createBy" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	</resultMap>
+	<!-- 用于配置一对多-->
+	<resultMap id="rolePrivilegeListMap" extends="roleMap" type="com.casc.sczd.bean.SysRole">
+		<collection property="privilegeList"
+					column="{roleId=id}"
+					select="com.casc.sczd.mapper.PrivilegeMapper.getPrivilegeByRoleId"
+			/>
+	</resultMap>
+
+	<!-- 保存單挑記錄sql,返回的值是主键,要求数据库支持主键自增长 -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_role(
+                    id,
+                    role_name,
+                    enabled,
+                    create_by,
+                    create_time
+                )
+        values(
+                    #{id},
+                    #{roleName},
+                    #{enabled},
+                    #{createBy},
+                    #{createTime}
+        		)
+    </insert>
+
+
+	<!-- 根據ID跟新單條記錄 -->
+	<update id="update">
+		update sys_role
+		<set>
+			<if test="id != null">
+				id=#{id},
+			</if>
+			<if test="roleName != null">
+				role_name=#{roleName},
+			</if>
+			<if test="description != null">
+				description=#{description},
+			</if>
+			<if test="enabled != null">
+				enabled=#{enabled},
+			</if>
+			<if test="createBy != null">
+				create_by=#{createBy},
+			</if>
+			<if test="createTime != null">
+				create_time=#{createTime},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+
+	<delete id="deleteByIds">
+		delete from sys_role where id in
+		<foreach collection="idList" open="(" close=")" separator=","
+				 item="id" index="i">
+			#{id}
+		</foreach>
+	</delete>
+
+
+	<select id="getById" resultMap="roleMap" >
+		select * from sys_role where
+		id = #{id}
+	</select>
+
+
+	<select id="getAll" resultType="com.casc.sczd.bean.SysRole">
+		select *
+		from sys_role
+	</select>
+
+
+
+
+
+	<select id="selectRoleById" resultMap="roleMap">
+		select * from sys_role where id = #{id}
+	</select>
+
+	<select id="getRolesByUserId" resultMap="rolePrivilegeListMap">
+		select
+		r.id,
+		r.role_name roleName,
+		r.enabled,
+		r.create_by createBy,
+		r.create_time createTime
+		from sys_role r
+		inner join sys_user_role ur on r.id
+		= ur.role_id
+		where ur.user_id = #{userid}
+	</select>
+
+
+</mapper>

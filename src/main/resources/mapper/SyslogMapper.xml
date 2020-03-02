@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.casc.sczd.mapper.SyslogMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.casc.sczd.bean.SysLog" id="syslogMap">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="operation" column="operation"/>
+        <result property="method" column="method"/>
+        <result property="params" column="params"/>
+        <result property="time" column="time"/>
+        <result property="ip" column="ip"/>
+        <result property="createDate" column="create_date" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+
+    <!-- 保存單挑記錄sql,返回的值是主键,要求数据库支持主键自增长 -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into syslog(
+                    id,
+                    username,
+                    operation,
+                    method,
+                    params,
+                    time,
+                    ip,
+                    create_date
+                )
+        values(
+                    #{id},
+                    #{username},
+                    #{operation},
+                    #{method},
+                    #{params},
+                    #{time},
+                    #{ip},
+                    #{createDate}
+        		)
+    </insert>
+
+
+
+    <delete id="deleteByIds">
+        delete from syslog where id in
+        <foreach collection="idList" open="(" close=")" separator=","
+                 item="id" index="i">
+            #{id}
+        </foreach>
+    </delete>
+
+
+
+    <select id="getAll" resultType="com.casc.sczd.bean.SysLog">
+		select *
+		from syslog
+	</select>
+
+
+</mapper>

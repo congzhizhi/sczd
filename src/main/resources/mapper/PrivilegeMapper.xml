@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.casc.sczd.mapper.PrivilegeMapper">
+	<resultMap id="sysPrivilegeMap" type="com.casc.sczd.bean.SysPrivilege">
+		<id column="id" jdbcType="BIGINT" property="id" />
+		<result property="privilegeName" column="privilege_name"/>
+		<result property="privilegeUrl" column="privilege_url"/>
+		<result property="pid" column="pid"/>
+		<result property="order" column="order"/>
+		<result property="perm" column="perm"/>
+		<result property="type" column="type"/>
+	</resultMap>
+
+
+	<!-- 保存單挑記錄sql,返回的值是主键,要求数据库支持主键自增长 -->
+	<insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_privilege(
+                    id,
+                    privilege_name,
+                    privilege_url,
+                    pid,
+                    order,
+                    perm,
+                    type,
+                )
+        values(
+                    #{id},
+                    #{privilegeName},
+                    #{privilegeUrl},
+                    #{pid},
+                    #{order},
+                    #{perm},
+                    #{type},
+        		)
+    </insert>
+
+
+	<!-- 根據ID跟新單條記錄 -->
+	<update id="update">
+		update sys_privilege
+		<set>
+			<if test="id != null">
+				id=#{id},
+			</if>
+			<if test="privilegeName != null">
+				privilege_name=#{privilegeName},
+			</if>
+			<if test="privilegeUrl != null">
+				privilege_url=#{privilegeUrl},
+			</if>
+			<if test="pid != null">
+				pid=#{pid},
+			</if>
+			<if test="order != null">
+				order=#{order},
+			</if>
+			<if test="perm != null">
+				perm=#{perm},
+			</if>
+			<if test="type != null">
+				type=#{type},
+			</if>
+		</set>
+		where id = #{id}
+	</update>
+
+	<delete id="deleteByIds">
+		delete from sys_privilege where id in
+		<foreach collection="idList" open="(" close=")" separator=","
+				 item="id" index="i">
+			#{id}
+		</foreach>
+	</delete>
+
+
+	<select id="getById" resultMap="sysPrivilegeMap" >
+		select * from sys_privilege where
+		id = #{id}
+	</select>
+
+
+	<select id="getAll" resultType="com.casc.sczd.bean.SysPrivilege">
+		select *
+		from sys_privilege
+	</select>
+
+
+	<select id="getPrivilegeByRoleId" resultMap="sysPrivilegeMap">
+		select p.*
+		from sys_privilege p
+		inner join sys_role_privilege rp on rp.privilege_id = p.id
+			where role_id = #{roleId}
+	</select>
+</mapper>
