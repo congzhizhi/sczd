@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.casc.sczd.mapper.TestMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.casc.sczd.bean.Test" id="testMap">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="phone" column="phone"/>
+    </resultMap>
+
+
+    <!-- 保存單挑記錄sql,返回的值是主键,要求数据库支持主键自增长 -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into test(
+                    name,
+                    id,
+                    phone
+        )
+        values(
+                    #{name},
+                    #{id},
+                    #{phone}
+        		)
+    </insert>
+
+
+    <!-- 根據ID跟新單條記錄 -->
+    <update id="update">
+        update test
+        <set>
+            <if test="name != null">
+                name=#{name},
+            </if>
+            <if test="id != null">
+                id=#{id},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteByIds">
+        delete from test where id in
+        <foreach collection="idList" open="(" close=")" separator=","
+                 item="id" index="i">
+            #{id}
+        </foreach>
+    </delete>
+
+
+    <select id="getById" resultMap="testMap">
+		select * from test where
+		id = #{id}
+	</select>
+
+
+    <select id="getAll" resultType="com.casc.sczd.bean.Test">
+		select *
+		from test
+	</select>
+
+
+</mapper>

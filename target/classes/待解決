@@ -1,0 +1,2 @@
+1.日誌文件，別忘了配置tomcat的運行日誌和臨時文件，在application.properties文件中配置server.tomcat.basedir=/home/sang/tmp
+

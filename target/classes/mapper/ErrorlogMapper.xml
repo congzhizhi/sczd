@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.casc.sczd.mapper.ErrorlogMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.casc.sczd.bean.Errorlog" id="errorlogMap">
+        <result property="id" column="id"/>
+        <result property="desp" column="desp"/>
+        <result property="type" column="type"/>
+        <result property="time" column="time"/>
+    </resultMap>
+
+
+    <!-- 保存單挑記錄sql,返回的值是主键,要求数据库支持主键自增长 -->
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into errorlog(
+                    desp,
+                    type,
+                    time
+                )
+        values(
+                    #{desp},
+                    #{type},
+                    #{time}
+        		)
+    </insert>
+
+
+    <!-- 根據ID跟新單條記錄 -->
+    <update id="update">
+        update errorlog
+        <set>
+                            <if test="id != null">
+                    id=#{id},
+                </if>
+                            <if test="desp != null">
+                    desp=#{desp},
+                </if>
+                            <if test="type != null">
+                    type=#{type},
+                </if>
+                            <if test="time != null">
+                    time=#{time},
+                </if>
+                    </set>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteByIds">
+		delete from errorlog where id in
+        <foreach collection="idList" open="(" close=")" separator=","
+                 item="id" index="i">
+            #{id}
+        </foreach>
+	</delete>
+
+
+    <select id="getById" resultMap="errorlogMap" >
+		select * from errorlog where
+		id = #{id}
+	</select>
+
+
+    <select id="getAll" resultType="com.casc.sczd.bean.Errorlog">
+		select *
+		from errorlog
+	</select>
+
+
+</mapper>

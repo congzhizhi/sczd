@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.casc.sczd.SczdApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.739 s - in com.casc.sczd.SczdApplicationTests
