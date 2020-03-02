@@ -4,7 +4,9 @@
     <bookmark url="file://$PROJECT_DIR$/pom.xml" line="123" mnemonic="2" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ec1d6b12-73b1-43cd-9e83-58a7b889eb8e" name="Default" comment="" />
+    <list default="true" id="ec1d6b12-73b1-43cd-9e83-58a7b889eb8e" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -160,7 +162,7 @@
       </MavenImportingSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
     <option name="y" value="5" />
     <option name="width" value="1934" />
@@ -383,7 +385,7 @@
       <workItem from="1582008928606" duration="20764000" />
       <workItem from="1582095524670" duration="51071000" />
       <workItem from="1582678432281" duration="32610000" />
-      <workItem from="1582881928141" duration="16363000" />
+      <workItem from="1582881928141" duration="16997000" />
     </task>
     <servers />
   </component>
@@ -420,11 +422,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183840000" />
+    <option name="totallyTimeSpent" value="184474000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="5" width="1934" height="1042" extended-state="1" />
-    <editor active="true" />
+    <frame x="-7" y="5" width="1934" height="1042" extended-state="0" />
     <layout>
       <window_info anchor="right" id="Palette" order="11" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
