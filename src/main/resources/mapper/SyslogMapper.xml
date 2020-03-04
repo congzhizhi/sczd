@@ -56,6 +56,21 @@
 		select *
 		from syslog
 	</select>
+    <select id="getBytTimeandType" resultType="com.casc.sczd.bean.SysLog">
+		select *
+		from syslog
+        <where>
+            <if test="@com.casc.sczd.util.StringUtil@isNotEmpty(username)">
+                and username = #{username}
+            </if>
+            <if test="createDate_begin!= null">
+                <![CDATA[ and create_date>=#{createDate_begin}]]>
+            </if>
+            <if test="createDate_end != null">
+                <![CDATA[ and create_date<=#{createDate_end}]]>
+            </if>
+        </where>
+	</select>
 
 
 </mapper>

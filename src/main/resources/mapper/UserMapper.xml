@@ -301,6 +301,8 @@
 				and user_email = #{userEmail}
 			</if>
 
+
+
 		</where>
 	</select>
 
