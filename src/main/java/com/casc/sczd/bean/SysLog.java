@@ -9,6 +9,7 @@
 package com.casc.sczd.bean;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -40,5 +41,4 @@ public class SysLog implements Serializable {
 	@DateTimeFormat(pattern="yyyy-MM-dd HH;mm;ss")
 	@JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
-
 }

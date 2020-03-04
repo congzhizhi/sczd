@@ -1,7 +1,9 @@
 package com.casc.sczd.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -37,7 +39,11 @@ public class SyslogController {
         PageInfo<SysLog> pageInfo=new PageInfo<SysLog>(list);
         return  ReturnData.buildSuccess(pageInfo);
     }
-
+    @PostMapping("/getBytTimeAndType")
+    public ReturnData getBytTimeAndType(@RequestBody Map<String, Object> params ){
+//        PageUtils page = syslogService.getAll(param);
+        return  ReturnData.buildSuccess(new PageInfo<SysLog>(syslogService.getBytTimeandTypeByPage(params)));
+    }
 
 
     /**

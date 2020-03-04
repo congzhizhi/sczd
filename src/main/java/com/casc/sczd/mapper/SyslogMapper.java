@@ -4,6 +4,7 @@ import com.casc.sczd.bean.SysLog;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 系统日志
@@ -17,5 +18,6 @@ public interface SyslogMapper  {
     public int save(SysLog syslog) ;
     public int deleteByIds(@Param("idList") List<Integer> idList);
     public List<SysLog> getAll() ;
-	
+
+    List<SysLog> getBytTimeandType(Map<String, Object> params);
 }

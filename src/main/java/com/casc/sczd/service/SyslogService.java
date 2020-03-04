@@ -1,5 +1,6 @@
 package com.casc.sczd.service;
 
+import com.casc.sczd.annotation.PageHelperAnnotation;
 import com.casc.sczd.bean.SysLog;
 import com.casc.sczd.mapper.SyslogMapper;
 import com.casc.sczd.util.PageUtils;
@@ -22,7 +23,7 @@ import java.util.Map;
  */
 @Service
 @Transactional(propagation = Propagation.REQUIRED,isolation = Isolation.REPEATABLE_READ)
-public class SyslogService{
+public class SyslogService extends BaseService{
 
     @Autowired
     SyslogMapper syslogMapper;
@@ -51,6 +52,11 @@ public class SyslogService{
     public List<SysLog> getAll(Integer page, Integer limit){
         PageHelper.startPage(page, limit);//设置数据库分页查询的范围
         return  syslogMapper.getAll();
+    }
+
+    @PageHelperAnnotation
+    public List<SysLog> getBytTimeandTypeByPage(Map<String, Object> params) {
+        return  syslogMapper.getBytTimeandType(params);
     }
 }
 
