@@ -8,7 +8,9 @@
 
 package com.casc.sczd.bean;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -35,6 +37,8 @@ public class SysLog implements Serializable {
 	//IP地址
 	private String ip;
 	//创建时间
+	@DateTimeFormat(pattern="yyyy-MM-dd HH;mm;ss")
+	@JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
 	private Date createDate;
 
 }
