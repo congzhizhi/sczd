@@ -3,7 +3,10 @@ package com.casc.sczd.bean;
 
 import java.io.Serializable;
 import java.util.Date;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 /**
  * 
@@ -31,6 +34,8 @@ public class Errorlog implements Serializable {
 	/**
 	 * 日志生成时间
 	 */
+	@DateTimeFormat(pattern="yyyy-MM-dd HH;mm;ss")
+	@JsonFormat(timezone="GMT+8",pattern="yyyy-MM-dd HH:mm:ss")
 	private Date time;
 
 }
