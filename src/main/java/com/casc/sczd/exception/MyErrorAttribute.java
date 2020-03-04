@@ -33,7 +33,7 @@ public class MyErrorAttribute extends DefaultErrorAttributes {
         errorAttributes.remove("status");
 
         Errorlog errorlog = new Errorlog();
-        errorlog.setDesp(""+errorAttributes.get("msg"));
+        errorlog.setDesp(""+errorAttributes.get("msg")+":"+errorAttributes.get("path"));
         errorlog.setType(1);
         errorlog.setTime(new Date());
         errorlogMapper.save(errorlog);
