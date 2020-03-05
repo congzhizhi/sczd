@@ -42,7 +42,6 @@ public class ErrorlogController {
 
     @PostMapping("/getBytTimeAndType")
     public ReturnData getBytTimeAndType(@RequestBody Map<String, Object> params ){
-//        PageUtils page = syslogService.getAll(param);
         return  ReturnData.buildSuccess(new PageInfo<SysLog>(errorlogService.getBytTimeandTypeByPage(params)));
     }
 
