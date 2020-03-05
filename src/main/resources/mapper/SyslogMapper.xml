@@ -56,7 +56,7 @@
 		select *
 		from syslog
 	</select>
-    <select id="getBytTimeandType" resultType="com.casc.sczd.bean.SysLog">
+    <select id="getBytTimeAnduserName" resultType="com.casc.sczd.bean.SysLog">
 		select *
 		from syslog
         <where>

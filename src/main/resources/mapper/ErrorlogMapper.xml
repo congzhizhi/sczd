@@ -67,5 +67,20 @@
 		from errorlog
 	</select>
 
+    <select id="getBytTimeandTypeByPage" resultType="com.casc.sczd.bean.Errorlog">
+        select *
+        from errorlog
+        <where>
+            <if test="@com.casc.sczd.util.StringUtil@isNotEmpty(type)">
+                and type = #{type}
+            </if>
+            <if test="createDate_begin!= null">
+                <![CDATA[ and time>=#{createDate_begin}]]>
+            </if>
+            <if test="createDate_end != null">
+                <![CDATA[ and time<=#{createDate_end}]]>
+            </if>
+        </where>
+    </select>
 
 </mapper>

@@ -1,6 +1,8 @@
 package com.casc.sczd.service;
 
+import com.casc.sczd.annotation.PageHelperAnnotation;
 import com.casc.sczd.bean.Errorlog;
+import com.casc.sczd.bean.SysLog;
 import com.casc.sczd.mapper.ErrorlogMapper;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +66,10 @@ public class ErrorlogService{
     public List<Errorlog> getAll(Integer page, Integer limit){
         PageHelper.startPage(page, limit);//设置数据库分页查询的范围
         return errorlogMapper.getAll();
+    }
+    @PageHelperAnnotation
+    public List<SysLog> getBytTimeandTypeByPage(Map<String,Object> params) {
+        return  errorlogMapper.getBytTimeandTypeByPage(params);
     }
 }
 

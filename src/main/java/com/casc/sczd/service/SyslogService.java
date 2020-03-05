@@ -55,8 +55,8 @@ public class SyslogService extends BaseService{
     }
 
     @PageHelperAnnotation
-    public List<SysLog> getBytTimeandTypeByPage(Map<String, Object> params) {
-        return  syslogMapper.getBytTimeandType(params);
+    public List<SysLog> getBytTimeAnduserName(Map<String, Object> params) {
+        return  syslogMapper.getBytTimeAnduserName(params);
     }
 }
 

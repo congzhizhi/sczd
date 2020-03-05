@@ -19,5 +19,5 @@ public interface SyslogMapper  {
     public int deleteByIds(@Param("idList") List<Integer> idList);
     public List<SysLog> getAll() ;
 
-    List<SysLog> getBytTimeandType(Map<String, Object> params);
+    List<SysLog> getBytTimeAnduserName(Map<String, Object> params);
 }

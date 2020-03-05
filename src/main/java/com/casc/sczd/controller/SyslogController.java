@@ -39,10 +39,10 @@ public class SyslogController {
         PageInfo<SysLog> pageInfo=new PageInfo<SysLog>(list);
         return  ReturnData.buildSuccess(pageInfo);
     }
-    @PostMapping("/getBytTimeAndType")
-    public ReturnData getBytTimeAndType(@RequestBody Map<String, Object> params ){
+    @PostMapping("/getBytTimeAnduserName")
+    public ReturnData getBytTimeAnduserName(@RequestBody Map<String, Object> params ){
 //        PageUtils page = syslogService.getAll(param);
-        return  ReturnData.buildSuccess(new PageInfo<SysLog>(syslogService.getBytTimeandTypeByPage(params)));
+        return  ReturnData.buildSuccess(new PageInfo<SysLog>(syslogService.getBytTimeAnduserName(params)));
     }
 
 

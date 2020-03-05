@@ -2,8 +2,10 @@ package com.casc.sczd.controller;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import com.casc.sczd.annotation.SysLogAnnotation;
+import com.casc.sczd.bean.SysLog;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,14 @@ public class ErrorlogController {
         PageInfo<Errorlog> pageInfo=new PageInfo<Errorlog>(list);
         return  ReturnData.buildSuccess(pageInfo);
     }
+
+    @PostMapping("/getBytTimeAndType")
+    public ReturnData getBytTimeAndType(@RequestBody Map<String, Object> params ){
+//        PageUtils page = syslogService.getAll(param);
+        return  ReturnData.buildSuccess(new PageInfo<SysLog>(errorlogService.getBytTimeandTypeByPage(params)));
+    }
+
+
 
 
     /**
