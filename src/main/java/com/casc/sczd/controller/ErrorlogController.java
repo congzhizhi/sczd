@@ -31,7 +31,7 @@ public class ErrorlogController {
     private ErrorlogService errorlogService;
 
 
-    //git diff命令冲突测试 reset
+    //git diff命令冲突测试 fuck
     /**
      * 列表，獲取所有Errorlog記錄
      */
