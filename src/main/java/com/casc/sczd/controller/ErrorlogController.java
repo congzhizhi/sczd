@@ -30,9 +30,10 @@ public class ErrorlogController {
     @Autowired
     private ErrorlogService errorlogService;
 
-    //git diff 命令测试 reset
+
+    //git diff命令冲突测试 gaga
     /**
-     * 列表，获取所有Errorlog記錄
+     * 列表，獲取所有Errorlog記錄
      */
     @GetMapping("/list/{page}/{limit}")
     public ReturnData list(@PathVariable("page") Integer page,@PathVariable("limit") Integer limit){
