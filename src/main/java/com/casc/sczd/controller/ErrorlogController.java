@@ -30,7 +30,7 @@ public class ErrorlogController {
     @Autowired
     private ErrorlogService errorlogService;
 
-    //git diff 命令测试
+    //git diff 命令测试 reset
     /**
      * 列表，获取所有Errorlog記錄
      */
