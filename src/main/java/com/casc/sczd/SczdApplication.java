@@ -51,6 +51,7 @@ public class SczdApplication {
 //        registrationBean.addInitParameter("loginUsername", "root");
 //        registrationBean.addInitParameter("loginPassword", "1234");
         registrationBean.addInitParameter("resetEnable", "false");
+        //test
         return registrationBean;
     }
 }
