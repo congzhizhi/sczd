@@ -70,6 +70,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/admin/**", "roleOrFilter[admin]");//有其中一个即可
 
         filterChainDefinitionMap.put("/syslog/**", "perms[/syslog/list]");
+        filterChainDefinitionMap.put("/sysuser/save", "perms[/sysuser/save]");
         //有编辑权限才可以访问
 //        filterChainDefinitionMap.put("/video/update","perms[video_update]");
 

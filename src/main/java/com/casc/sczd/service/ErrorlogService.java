@@ -67,8 +67,9 @@ public class ErrorlogService{
         PageHelper.startPage(page, limit);//设置数据库分页查询的范围
         return errorlogMapper.getAll();
     }
+
     @PageHelperAnnotation
-    public List<SysLog> getBytTimeandTypeByPage(Map<String,Object> params) {
+    public List<Errorlog> getBytTimeandTypeByPage(Map<String,Object> params) {
         return  errorlogMapper.getBytTimeandTypeByPage(params);
     }
 }

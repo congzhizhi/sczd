@@ -23,5 +23,5 @@ public interface ErrorlogMapper {
     public Errorlog getById(long id) ;
     public List<Errorlog> getAll() ;
 
-    List<SysLog> getBytTimeandTypeByPage(Map<String,Object> params);
+    List<Errorlog> getBytTimeandTypeByPage(Map<String,Object> params);
 }

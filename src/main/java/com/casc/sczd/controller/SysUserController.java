@@ -58,7 +58,6 @@ public class SysUserController {
     public ReturnData save(@RequestBody SysUser sysUser){
         sysUser.setUserPassword(new SimpleHash("md5", sysUser.getUserPassword(), null, 2).toString());
 		sysUserService.save(sysUser);
-
         return ReturnData.buildSuccess();
     }
 
