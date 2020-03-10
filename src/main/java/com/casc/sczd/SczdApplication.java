@@ -22,21 +22,6 @@ import java.util.*;
 @ServletComponentScan
 @EnableTransactionManagement//开启事务管理
 public class SczdApplication {
-    @Autowired
-    private RedisTemplate redisTemplate;
-    @PostConstruct
-    public void init(){
-        initRedisTemplate();
-    }
-
-    private void initRedisTemplate() {
-        RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
-        redisTemplate.setKeySerializer(stringSerializer);
-        redisTemplate.setValueSerializer(RedisSerializer.json());
-        redisTemplate.setHashKeySerializer(stringSerializer);
-        redisTemplate.setHashValueSerializer(RedisSerializer.json());
-        redisTemplate.afterPropertiesSet();
-    }
     //http://localhost:8000/druid/index.html
     public static void main(String[] args) {
         SpringApplication.run(SczdApplication.class, args);
